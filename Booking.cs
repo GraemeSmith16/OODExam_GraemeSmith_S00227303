@@ -10,7 +10,8 @@ namespace OODExam_GraemeSmith_S00227303
     {
         public int BookingID { get; set; }
         public DateTime BookingDate { get; set; }
-        public int NumberOfTickers { get; set; }
+        public int NumberOfTickets { get; set; }
         public Movie Movie { get; set; }
+        public int MovieID { get; set; }
     }
 }

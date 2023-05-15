@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 
+
 namespace OODExam_GraemeSmith_S00227303
 {
     public class Movie
@@ -19,8 +20,15 @@ namespace OODExam_GraemeSmith_S00227303
 
     public class MovieData : DbContext
     {
-        public MovieData() : base("OODExam_GraemeSmith") { }
-        public DbSet<Booking> Bookings { get; set; }
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Booking>()
+                .HasRequired(b => b.Movie)
+                .WithMany(m => m.Bookings)
+                .HasForeignKey(b => b.MovieID);
+        }
     }
 }
