@@ -50,6 +50,8 @@ namespace OODExam_GraemeSmith_S00227303
             db.Bookings.Add(b1);
             db.SaveChanges();
 
+            //Had to spend extra time troubleshooting the PresentationFramework error so couldn't finish this, but it will at least make an entry into
+            //The booking database
         }
     }
 }
