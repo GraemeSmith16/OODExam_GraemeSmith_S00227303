@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OODExam_GraemeSmith_S00227303"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -21,15 +21,25 @@
         </Grid.RowDefinitions>
         <Label Content="Movie Listings" Padding="5" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
         <Label Content="Movie Synopsis" Padding="5" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3"></Label>
-        <ListBox x:Name="lbxMovies" Padding="20" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1"></ListBox>
-        <Label Name="lblSynopsis" Padding="20" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="1"></Label>
+        <ListBox x:Name="lbxMovies" Padding="20" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" SelectionChanged="lbxMovies_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Image Source="{Binding Path=ImageName}" Width="100"/>
+                        <TextBlock Text="{Binding Title}" />
+                        <TextBlock Text="{Binding Cast}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBox x:Name="tbxSynopsis" Padding="20" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2"></TextBox>
         <Label Grid.Column="0" Grid.Row="2" Padding="5" VerticalAlignment="Top" Content="Quick Book"></Label>
         <TextBlock Grid.Column="0" Grid.Row="2" Padding="5" VerticalAlignment="Center" Text="Select movie from list above, choose dates and tickets required"></TextBlock>
-        <DatePicker Grid.Column="1" Grid.Row="2" Padding="10"></DatePicker>
+        <DatePicker x:Name="datePicker" Grid.Column="1" Grid.Row="2" Padding="10"></DatePicker>
         <Label Content="Available Seats" Grid.Column="2" Grid.Row="2" VerticalAlignment="Top"></Label>
-        <Label Content="100" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center"></Label>
+        <Label x:Name="availableTickets" Content="100" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center"></Label>
         <Label Content="Required Seats" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top"></Label>
         <TextBox Name="tbxBookings" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center"></TextBox>
-        <Button Grid.Column="4" Grid.Row="2" Content="Book Seats" Padding="10"></Button>
+        <Button Grid.Column="4" Grid.Row="2" Content="Book Seats" Padding="10" Click="Button_Click"></Button>
     </Grid>
 </Window>

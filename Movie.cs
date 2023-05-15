@@ -23,6 +23,7 @@ namespace OODExam_GraemeSmith_S00227303
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Booking> Bookings { get; set; }
 
+        //Creates a one-to-many relationship between Movies and Bookings
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Booking>()
