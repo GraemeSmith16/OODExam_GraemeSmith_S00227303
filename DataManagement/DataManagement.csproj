@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+	  <Reference Include="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <ProjectReference Include="..\OODExam_GraemeSmith_S00227303.csproj" />
   </ItemGroup>
 
